@@ -7,6 +7,7 @@
 - Terraform under the hood uses APIs provided by cloud providers to achieve all these. All major cloud provider provides APIs to deal with Terraform. Terraform basically provides a wrapper layer on top of API so that developer can concentrate only on the configurations rather the API.
   - Terraform does not work if the cloud provider do not provide the API to provision the infrastructure.
   - Since they deal with infrastructure, there are some locking mechanism, which prevents terraform to simultaneously update the same resource. These are called state locking.
+  - .terraform.tfstate.lock.info the lock file are saved here while there is any transaction.
   - State locking can be applied is backend supports it. For every write action terraform creates a lock so that other actions are not able to access the same resource simultaneously.
   - There is a mechanism of force unlock which allows forcefully acquire the resource. Be careful with this command.
 - Hashicorp do not promote yaml, instead uses Their own configuration language.
