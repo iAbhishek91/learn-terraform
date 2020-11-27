@@ -7,6 +7,8 @@ This is not a constraints, but this is not possible, if you are thinking about i
 - Terraform can create resources that are defined in the project.
 - Terraform can **delete only resource that it have created**. The information of the resources created by terraform are stored in *state file*.
 
+> New feature import mitigate this. Check out xx-import
+
 ## terraform script maintenance
 
 Terraform scripts require high maintenance.

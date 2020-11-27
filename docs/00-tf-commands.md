@@ -33,6 +33,9 @@ tf plan
 #      + main_route_table_id              = (known after apply)
 #      + owner_id                         = (known after apply)
 #    }
+
+# pass a variable files.
+tf plan --var-file=prod.tfvars
 ```
 
 - checks the state, to verify what is already created and whats not. it creates a .terraform folder. Its difficult if we loose that file.
@@ -47,6 +50,9 @@ tf apply
 # aws_vpc.myvpc: Creating...
 # aws_vpc.myvpc: Creation complete after 1s [id=vpc-0c2e52f678cdce96e]
 # Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+# will not ask for confirmation
+tf apply -auto-approve
 ```
 
 ## DESTROY
@@ -71,4 +77,10 @@ tf destroy
 #      - owner_id                         = "611637807043" -> null
 #      - tags                             = {} -> null
 #    }
+```
+
+## IMPORT
+
+```sh
+tf import aws_vpc.myvpc2 vpc-05372a0768b93f530
 ```
