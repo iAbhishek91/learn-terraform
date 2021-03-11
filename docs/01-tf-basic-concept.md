@@ -18,3 +18,4 @@
 - **Providers**: refers to cloud provider. Providers are responsible for understanding API and underlying hardware.
 - **Module**: they are group of resources that are used together.
 - **State**: it’s the state of the managed resources. They are saved by terraform in local or remote filesystem file called terraform.tfstate. it’s important for disaster for Terraform to work with our state.
+- **Configuration files**: 

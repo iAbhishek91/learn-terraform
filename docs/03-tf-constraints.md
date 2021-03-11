@@ -11,7 +11,7 @@ This is not a constraints, but this is not possible, if you are thinking about i
 
 ## terraform script maintenance
 
-Terraform scripts require high maintenance.
+Terraform scripts require high maintenance. However they are generally well documented.
 
-- version of terraform
+- version of terraform: includes - hcl, config changes, 
 - version of API you are using
