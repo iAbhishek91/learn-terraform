@@ -16,6 +16,27 @@
 
 - **Resources**: they are vms, physical device on cloud which can be managed via API.
 - **Providers**: refers to cloud provider. Providers are responsible for understanding API and underlying hardware.
+  - Hashicorp maintained: there are providers that are maintained by hashicorp, few that are not maintained by hashicorp like digitalocean/digitalocean.
+  - What is the difference?? - from 0.13 onwards, the below section(source information for providers) is required for non-hashicorp maintained providers. For hashicorp maintained provider the block is optional, however recommended. *This is because, by default terraform will search under hashicorp/<provider-name> hence digitalocean would not work*.
+
+```hcl
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+    }
+  }
+}
+
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "hashicorp/aws"
+    }
+  }
+}
+```
+
 - **Module**: they are group of resources that are used together.
 - **State**: it’s the state of the managed resources. They are saved by terraform in local or remote filesystem file called terraform.tfstate. it’s important for disaster for Terraform to work with our state.
 - **Configuration files**: 

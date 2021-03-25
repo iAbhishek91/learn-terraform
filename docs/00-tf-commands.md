@@ -4,11 +4,16 @@
 
 ```sh
 terraform init
+# this command also initialize the backend
 # it download the plugins required and initializes tf
 # this command is idempotent
 # this is first command you run when you write configuration file, update or clone from somewhere.
 
 terraform init -lock=false
+
+# to upgrade the provider plugin version when lock file exits
+# this command will update the lock file as well
+terraform init -upgrade
 ```
 
 ## PLAN
@@ -84,6 +89,11 @@ tf destroy
 #      - owner_id                         = "611637807043" -> null
 #      - tags                             = {} -> null
 #    }
+
+# to destroy specific resource, not everything
+# -target is used for focusing terraform attention on only subset of resources
+# combination of Resource Type + Local Resource Name (ResourceType.LocalResourceName)
+tf destroy -target aws_instance.myec2 # deletes only myec2 aws ec2 instance
 ```
 
 ## IMPORT
