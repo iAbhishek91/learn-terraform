@@ -115,8 +115,9 @@ terraform fmt
 ### VALIDATE
 
 ```sh
-# validate the config files in a directory
+# validate the config files in a directory(this is not required as tf plan executes this under the hood)
 # this command only validate configuration and no remote services - state or provider API
+# this command validate unsupported arguments, undeclared variables and others
 tf validate
 ```
 
