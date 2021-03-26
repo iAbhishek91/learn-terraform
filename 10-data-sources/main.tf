@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "db" {
-  ami = data.aws_ami.ami_id.id
+  ami           = data.aws_ami.ami_id.id
   instance_type = "t2.micro"
   tags = {
     "Name" = "db server"
@@ -13,10 +13,10 @@ resource "aws_instance" "db" {
 
 data "aws_ami" "ami_id" {
   most_recent = true
-  owners = ["amazon"]
+  owners      = ["amazon"]
 
   filter {
-    name = "name"
+    name   = "name"
     values = ["amzn2-ami-hvm*"]
   }
 }
