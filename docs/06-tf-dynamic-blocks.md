@@ -15,3 +15,9 @@ Dynamic blocks are allowed in **resource**, **data**, **provider**, and **provis
 - Use it only when we need to hide details for *in order to build a clean user interface for a re-usable module*.
 
 > Refer 0x-dynamic-block project
+
+## Iterators
+
+These are optional to set the temporary variable that represents the current element, if we omit that iterator, then the name of the dynamic block is considered.
+
+Used to increase the readability.
