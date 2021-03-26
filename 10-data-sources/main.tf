@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "db" {
-  ami = "ami-08b993f76f42c3e2f"
+  ami = data.aws_ami.ami_id.id
   instance_type = "t2.micro"
   tags = {
     "Name" = "db server"
@@ -11,13 +11,12 @@ resource "aws_instance" "db" {
 }
 
 
-data "aws_instance" "dbsearch" {
-  filter {
-    name = "tag:Name"
-    values = [ "db server" ]
-  }
-}
+data "aws_ami" "ami_id" {
+  most_recent = true
+  owners = ["amazon"]
 
-output "dbserver" {
-  value = data.aws_instance.dbsearch.availability_zone
+  filter {
+    name = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
 }
