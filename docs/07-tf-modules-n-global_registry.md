@@ -6,6 +6,8 @@ This is mainly for structuring terraform project, as only **main.tf** will be co
 
 Also we can keep **terraform code as template** and pass everything from the `main.tf`.
 
+Visualize modules as *functions in traditional programming language it takes some arguments(input variables) and have a return values(output variables)*
+
 > NOTE: during init phase modules are initialized.
 
 Modules can be **external(third party) or user defined**.

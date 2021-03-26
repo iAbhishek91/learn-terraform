@@ -8,4 +8,4 @@ Very similar to ternary operator.
 
 This is used when we want to configure something based on configuration. *For example: we can say that based on environment few configuration will run or not*.
 
-condition expression is used in conjunction with **count** statement.
+condition expression can be used in multiple place like **count**, **local** statements.
