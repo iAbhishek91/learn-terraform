@@ -28,3 +28,11 @@ Available in JSON format. *To the see the changes, open this file while performi
 ## Horror scenario :(
 
 For one resource there is no problem, if the file goes missing we can go to AWS and delete the resource manually. But think of a scenario where we have entire environment setup using terraform and the state file is missing.
+
+## Structure of terraform state file
+
+Terraform state file contains
+
+- **terraform_version**: saves the version of the terraform.
+- **outputs**: as an object it saves everything
+- **resources**: what are the resources created or the current state.

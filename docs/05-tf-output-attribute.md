@@ -2,12 +2,17 @@
 
 ## Output
 
+One major use case of apart from printing the output is that, output value also act as a input to other resources being created via terraform.
+
 ### Syntax
 
-```tf
+```js
 output "myOutput" {
   value = aws_vpc.myvpc.id
 }
+
+// if attribute is not provided then every attribute will be printed
+// value = aws_vpc.myvpc
 ```
 
 ## Attribute

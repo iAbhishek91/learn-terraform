@@ -22,6 +22,7 @@ resource "aws_instance" "myec2" {
 }
 
 # elastic IP that will be attached with the compute engine
+# this is called reference
 resource "aws_eip" "eip" {
   instance = aws_instance.myec2.id
 }

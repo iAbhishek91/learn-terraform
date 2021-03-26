@@ -40,3 +40,8 @@ resource "aws_security_group" "webtraffic" {
     to_port = 443
   }
 }
+
+/*
+If we want to whitelist something dynamically, reference it via public ip, below:
+cidr_blocks = [ "${aws_eip.lb.public_ip}/32"] // note "/32" is just a concatenation
+*/
