@@ -3,6 +3,10 @@ provider "aws" {
 }
 
 
+locals{
+  time = formatdate("DD MMM YYYY hh:mm ZZZ", timestamp())
+}
+
 ## to see the values use tf plan (no need to apply the resource)
 resource "aws_vpc" "myvpc" {
   cidr_block = "10.0.0.0/16"
@@ -17,4 +21,8 @@ resource "aws_vpc" "myvpc" {
 # output when we are applying the ferraform
 output "vpcid" {
   value = aws_vpc.myvpc.id
+}
+
+output "time" {
+  value = local.time
 }
