@@ -2,7 +2,7 @@
 
 Modules are just folder with code in it. How they are used in Terraform?
 
-This is mainly for structuring terraform project, as only **main.tf** will be confusing and difficult to read and maintain.
+This is mainly for structuring terraform project, as only **main.tf** will be confusing and difficult to read and maintain. With modules we an implement DRY principle *in SE Don't Repeat Yourself, is a principle of software development aimed at reducing repetition of software patterns*.
 
 Also we can keep **terraform code as template** and pass everything from the `main.tf`.
 
