@@ -15,3 +15,7 @@ Terraform scripts require high maintenance. However they are generally well docu
 
 - version of terraform: includes - hcl, config changes, 
 - version of API you are using
+
+## Challenges with large infrastructure
+
+refer xx-large-infrastructure.md

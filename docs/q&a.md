@@ -144,3 +144,11 @@ Best practices:
 
 - when we use third party modules
 - also best for large organization developing internal modules.
+
+## How do you handle resources that are manually updated
+
+There are many scenarios where resources are manually updated after getting created from Terraform or before. There are basically **three options** you have:
+
+- tf refresh: if the resource was created and got updated
+- tf import: resources that were not created by terraform, and manually created.
+- manual process: delete all the resources and update the tf configuration files and apply. Tf have mechanism for manual steps as well like taint which will destroy and recreate the resources.

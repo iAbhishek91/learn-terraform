@@ -45,6 +45,25 @@ tf plan
 
 # pass a variable files.
 tf plan --var-file=prod.tfvars
+
+# save the terraform plan to a file
+# note the file will NOT be human readable
+# for exam we need to know, not used in real time
+tf plan -out=tfplan
+# output
+# This plan was saved to: tfplan
+# perform exactly these actions, run the following command to apply
+#   terraform apply "tfplan"
+
+
+# stop performing update of all the resources will not happen
+# this is used for large project as it may hit the API limits
+tf plan -refresh=false
+
+
+# to minimize the API call, we can also restrict plan for target resource, instead of *
+# this is also for the same purpose as previous one
+tf plan -target=ec2
 ```
 
 - checks the state, to verify what is already created and whats not. it creates a .terraform folder. Its difficult if we loose that file.
@@ -159,6 +178,64 @@ tf graph
 # Show: provide human readable output from a state or plan file.
 # output: JSON format,
 tf show 
+
+tf show planfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 ### TAINT and UNTAINT
@@ -191,6 +268,8 @@ terraform refresh -var-file=prod.tfvars
 
 ### OUTPUT
 
+We can use `tf apply` to fetch the output values at later stage, instead of tf output. tf output provides a alternative to the same
+
 ```sh
 # extract output values from state file
 output "lb_address" {
@@ -199,6 +278,9 @@ output "lb_address" {
 
 # below command will print all the values from the state file
 tf output
+
+# specific output value
+tf output lb_address
 ```
 
 ### PROVIDER
