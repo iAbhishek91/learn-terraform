@@ -32,7 +32,7 @@ Is reverse of pull, its rarely used and is note recommended.
 
 mostly used when we migrate from local backend to remote backend.
 
-## rm
+## remove
 
 This removes the items from state file. NOTE: it do not physically destroy the actual resource, and hence resources removed from state file will no longer managed by AWS.
 

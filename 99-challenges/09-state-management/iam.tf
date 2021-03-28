@@ -1,4 +1,4 @@
-resource "aws_iam_user" "tf_user" {
+resource "aws_iam_user" "name" {
   name = "terrafrom"
   path = "/system/"
 }

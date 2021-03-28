@@ -118,6 +118,7 @@ tf destroy -target aws_instance.myec2 # deletes only myec2 aws ec2 instance
 ## IMPORT
 
 ```sh
+# refer 99-challenges/xx-import-ec2 for the steps required
 tf import aws_vpc.myvpc2 vpc-05372a0768b93f530
 ```
 
