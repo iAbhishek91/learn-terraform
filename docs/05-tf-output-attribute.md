@@ -9,6 +9,8 @@ One major use case of apart from printing the output is that, output value also 
 ```js
 output "myOutput" {
   value = aws_vpc.myvpc.id
+  description = ""
+  sensitive = true // this will hide the data from any logs, but not in state files.
 }
 
 // if attribute is not provided then every attribute will be printed

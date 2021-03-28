@@ -38,3 +38,29 @@ module "name" {
 refer - 99-challenges/XX-multi-region, this will help you to deploy resources across different.
 
 ## Multi Account
+
+> We don't have multiple account, hence we are not demonstrating this scenario.
+
+For Multi account, think that we have multiple account with different user_name and password.
+
+As in AWS CLI (we need to create a **.aws** directory where all the **credentials** are stored, which is used by the AWS CLI).
+
+```txt
+[default]
+aws_access_key_id = bla bla
+aws_secret_access_key = bla bla
+
+[account2]
+aws_access_key_id = bla bla
+aws_secret_Access_key = bla bla
+```
+
+to mention the which profile to use we can mention that in the provider configurations.
+
+```hcl
+provider "aws" {
+    region = "eu-west-2"
+    alias = "london"
+    profile = "account2" // this account will make sure that the resources are deployed in the specific account.
+}
+```
