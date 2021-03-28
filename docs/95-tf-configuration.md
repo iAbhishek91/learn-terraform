@@ -14,6 +14,12 @@ terraform {
         anycloud = {
             source = "anyorg/anycloud"
             version = "~> 1.0"
+            // below are the version arguments allowed
+            // =1.0 - equal to 1.0 // this is recommended
+            // >=1.0 - greater than equal to the version
+            // <=1.0 - less than equal to the version
+            // ~>2.0 - any version in the 2.X range
+            // >=2.10,<=2.30 - any version between 2.10 and 2.30
         }
     }
     // backend as it goes inside terraform, it cant take ONLY constants
