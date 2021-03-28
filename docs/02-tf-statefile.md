@@ -36,3 +36,11 @@ Terraform state file contains
 - **terraform_version**: saves the version of the terraform.
 - **outputs**: as an object it saves everything
 - **resources**: what are the resources created or the current state.
+
+## Locking of terraform state file
+
+refer - tf-state-locking.md
+
+## Editing terraform state file
+
+refer - tf-state-update.md

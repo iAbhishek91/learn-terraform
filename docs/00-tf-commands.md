@@ -168,6 +168,46 @@ terraform get
 terraform get -update
 ```
 
+### STATE
+
+```sh
+# to update the state file, for more details: XX-tf-state-update.md
+
+# list resources from state file(tf apply on 09-state-management)
+tf state list
+# OUTPUT
+# aws_iam_user.name
+# aws_vpc.myvpc
+
+# show the attributes oa a single resources in the state 
+tf state show aws_iam_user.tf_user
+# OUTPUT
+# aws_iam_user.tf_user:
+# resource "aws_iam_user" "tf_user" {
+#    arn           = "arn:aws:iam::191546957099:user/system/terrafrom"
+#    force_destroy = false
+#    id            = "terrafrom"
+#    name          = "terrafrom"
+#    path          = "/system/"
+#    unique_id     = "AIDASZGIWTUVYHOE3SBUI"
+#}
+
+# remove items from the state file
+tf state rm aws_iam_user.tf_user
+
+# move item from terraform state file
+# this will change the local name of the object in the state file.
+# to make the change in sync, also change the configuration similar to new/update name
+tf state mv aws_iam_user.name aws_iam_user.tf_user
+
+# manually download and output the state from remote state, by default it will display in std out, if required redirect it to another file.
+tf state pull
+tf state pull > terraform.tfstate
+
+# manually upload local state file to remote state
+tf state push
+```
+
 ### GRAPH and SHOW
 
 ```sh
