@@ -5,7 +5,7 @@
 
 For example: requiring a minimum terraform version
 
-Terraform settings are gathered into terraform block
+Terraform settings are gathered into terraform block, however NOTE, this you can have multiple terraform blocks(one defining backend, another providers)
 
 ```hcl
 terraform {
@@ -29,7 +29,15 @@ terraform {
 
 ## backend
 
+There are two areas of terraform behavior that are determined by backend
+
+- where state is stored?
+- where operations are performed?
+
 - Backend types are to be mentioned, for example above "s3".
+  - There are may different types of backend type available(new backend types cant be added by users), however mainly classified as:
+    - standard backend types:
+    - enhanced backend types
 - In case backend block is not explicitly mentioned, "local" is configured as backend while `tf init`
 - hence backend configuration requires `tf init`
 
