@@ -2,7 +2,7 @@
 
 Its scenario, mainly when dealing with large/advance infrastructure, we sometime need to edit the statefile.
 
-However, NEVER update state file directly instead use `tf state` command.
+However, NEVER update state file directly instead use `tf state` command. *Other commands which update the states are `tf import` and `tf taint`*.
 
 ## List
 
