@@ -7,4 +7,6 @@ output "myout" {
       var3 = 10
       var4 = [true, false]
   }
+  sensitive = true
+  description = "bla bla"
 }

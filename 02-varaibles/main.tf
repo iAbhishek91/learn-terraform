@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 
-locals{
+locals {
   time = formatdate("DD MMM YYYY hh:mm ZZZ", timestamp())
 }
 
@@ -12,9 +12,9 @@ resource "aws_vpc" "myvpc" {
   cidr_block = "10.0.0.0/16"
   tags = {
     DynamicName = var.inputname
-    Name = var.vpcname
-    Use = var.mylist[0]
-    Env = var.mymap["env"]
+    Name        = var.vpcname
+    Use         = var.mylist[0]
+    Env         = var.mymap["env"]
   }
 }
 

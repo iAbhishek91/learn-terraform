@@ -3,6 +3,15 @@ provider "aws" {
 }
 
 locals {
+  a = "I'm a"
+  // the below is NOT allowed
+  // this is called self-referencing
+  // b = local.b + local.a
+  // this is cycles
+  // b = local.c
+  // c = local.b
+  b = local.a
+
   common_tags = {
       owner = "DevOps Team",
       service = "backend"
@@ -17,5 +26,8 @@ resource "aws_instance" "ec2" {
 }
 
 output "time" {
-  value = local.time
+  value = {
+    time = local.time
+    b = local.b
+  }
 }

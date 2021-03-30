@@ -16,6 +16,11 @@ Modules can be **external(third party) or user defined**.
 
 **Output** are important in modules as we need to pull down some of the values of *resources and attributes* form the modules. This more important when we deal with third party modules.
 
+## arguments of module block
+
+- source
+- version
+
 ## Source of modules
 
 There are different type of source that are supported by terraform:
@@ -71,3 +76,5 @@ module "consule" {
 Terraform registry: https://registry.terraform.io/
 
 We can find terraform **modules** and **providers** which are hosted by Hashicorp or open source developer.
+
+check the SYNTAX in XX-tf-registry.md

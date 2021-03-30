@@ -137,7 +137,8 @@ terraform fmt
 ```sh
 # validate the config files in a directory(this is not required as tf plan executes this under the hood)
 # this command only validate configuration and no remote services - state or provider API
-# this command validate unsupported arguments, undeclared variables and others
+# this command validates configurations in a directory, syntax, attribute names and value types, unsupported arguments, undeclared variables and others
+# validate works only post init
 tf validate
 ```
 
@@ -301,4 +302,26 @@ tf login
 # Success! Terraform has obtained and save and API token.
 
 # The new aPI token will be used for any future terraform command that must make authenticated requests to app.terraform.io
+```
+
+## WORKSPACE
+
+```sh
+# show all the sub commands
+tf workspace -h
+
+# displays the current workspace
+tf workspace show
+
+# list all the workspace, and also the current one in use
+tf workspace list
+
+# create a new workspace
+tf workspace new my-workspace
+
+# delete a workspace
+tf workspace delete my-workspace
+
+# select workspace
+tf workspace select my-workspace
 ```

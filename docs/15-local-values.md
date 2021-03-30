@@ -8,3 +8,12 @@ excessive use of **local** creates confusion and diminishes readability, however
 
 - tags
 - attributes, which have some common validation via expressions.
+
+BEST PRACTICE: Try to groups locals that are related if they are dependent on each other.
+
+>NOTE: self and circular reference are not allowed, means a local cant refer to itself or any other var which points to this.
+
+- c = local.c // self reference
+
+- a = local.b // cyclic reference
+- b = local.a

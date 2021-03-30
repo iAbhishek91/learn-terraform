@@ -133,3 +133,7 @@ There are many scenarios where resources are manually updated after getting crea
 - tf refresh: if the resource was created and got updated
 - tf import: resources that were not created by terraform, and manually created.
 - manual process: delete all the resources and update the tf configuration files and apply. Tf have mechanism for manual steps as well like taint which will destroy and recreate the resources.
+
+## what are meta arguments
+
+meta arguments are arguments that can be used in any resource types, modules etc. Meta arguments depends on the block, for example for resource block meta-args are depends_on, count, for_each, provider, lifecycle, for module meta-args are all except lifecycle.
