@@ -1,10 +1,10 @@
 # Terraform Cloud
 
-SaaS offering by Hashicorp. Its a hosted service at [Terraform-cloud](https://app.terrafrom.io). It runs terraform on disposable virtual machines in its own cloud infrastructure, also known as remote execution/remote operations.
+A SaaS offering by Hashicorm. Its a hosted service at [Terraform-cloud](https://app.terrafrom.io). It runs terraform on disposable virtual machines in its own cloud infrastructure, also known as remote execution/remote operations.
 
 Terraform cloud was previously known as terraform enterprise, the self hosted distribution was called private terraform enterprise (PTFE). Terraform cloud and enterprise are same application.
 
-Terraform cloud manages - terraform runs in a consistent and reliable environment with various features like access controls, private registry for sharing modules, policy controls and others.
+terraform cloud features on high level:
 
 - **Consistent environment to run terraform**: else different developer may have different versions.
 - **Policy check(paid plan)**: like resources should have tags, we can define our custom policies and policy sets.
@@ -96,23 +96,62 @@ Again, sentinel checks are inserted in between plan and apply.
 
 select backend as terraform cloud, this backend store the tf state file, and also executes terraform.
 
-backend.hcl
+Live demo: https://github.com/iAbhishek91/learn-terraform-cloud
+
+### Steps
+
+- Step-1: Create a workspace(with or without a vcs connection). Just enter the name and create the configurations.
+- Step-2: Create the two files as below
+
+```hcl
+// backend.hcl
 workspace { name = "demo-workspace" } // terraform workspace name
 hostname = "app.terraform.io" // hostname of the terraform
 organization = "demo-org"
 
-iam.tf
+// iam.tf
 terraform {
   required_version = "~> 0.12.0"
 
-  backend "remote" {}
+  backend "remote" {} // this indicate that this is remote backend
 }
 
 resource "aws_iam_user" "abhi" {
     name = "abhishek"
     path = "/system/"
 }
+```
 
-Now if we run the from local CLI, it will run the commands on the remote terraform cloud and outputs the logs in the local terminal.
+- Step-3: `tf login` this will login into the terraform cloud. 
+
+```sh
+tf login
+#will basically request an API token for the backend mentioned from the browser. If login is successful, Terraform will store  the token in plain text in the following file for use by subsequent commands.
+
+#C:\Users\abhishek\AppData\Roaming\terraform.d\credentials.tfrc.json
+
+#Terraform must now open a web browser to the tokens page for app.terraform.io.
+
+#If a browser does nto open this automatically, open the following URL to proceed:
+# https://app.terraform.io/app/settings/token?source=terraform-login
+
+# Generate a token using your browser, and copy-paste it into this prompt.
+
+# Terraform will store the token in plain text in the following file for use by subsequent commands:
+# C:\User\Abhishek\Roaming\terraform.d\credentials.tfrc.json
+
+# Token for app.terraform.io: note when you paste nothing will be displayed
+
+# Retrieved token for user abhishek
+
+# Success! Terraform has obtained and save and API token.
+
+# The new aPI token will be used for any future terraform command that must make authenticated requests to app.terraform.io
+```
+
+- Step-4: `terraform init -backend-config=backend.hcl`
+- Step-5: create the environment variable:  AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION.
+- Step-6: `terraform plan`
+- Step-7: `terraform apply`
 
 This is called remote operation.

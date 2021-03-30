@@ -275,3 +275,30 @@ tf output lb_address
 # shows information about the provider requirement of the configuration in the current working directory
 tf providers
 ```
+
+### LOGIN
+
+```sh
+tf login
+#will basically request an API token for the backend mentioned from the browser. If login is successful, Terraform will store  the token in plain text in the following file for use by subsequent commands.
+
+#C:\Users\abhishek\AppData\Roaming\terraform.d\credentials.tfrc.json
+
+#Terraform must now open a web browser to the tokens page for app.terraform.io.
+
+#If a browser does nto open this automatically, open the following URL to proceed:
+# https://app.terraform.io/app/settings/token?source=terraform-login
+
+# Generate a token using your browser, and copy-paste it into this prompt.
+
+# Terraform will store the token in plain text in the following file for use by subsequent commands:
+# C:\User\Abhishek\Roaming\terraform.d\credentials.tfrc.json
+
+# Token for app.terraform.io: note when you paste nothing will be displayed
+
+# Retrieved token for user abhishek
+
+# Success! Terraform has obtained and save and API token.
+
+# The new aPI token will be used for any future terraform command that must make authenticated requests to app.terraform.io
+```
