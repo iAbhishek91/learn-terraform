@@ -1,6 +1,6 @@
 # Splat expression
 
-Splat expression allows us to get a list of all the attributes.
+Splat expression allows us to get a list(works only with list and tuples) of all the attributes.
 
 Is kind of regular expression in a different syntax.
 
