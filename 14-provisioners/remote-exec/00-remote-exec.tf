@@ -28,8 +28,7 @@ resource "aws_instance" "configured_ec2" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      // manually generate a key pair befor
-      e tf apply
+      // manually generate a key pair before tf apply
       private_key = file("./abhishek.pem")
       host        = self.public_ip
     }
