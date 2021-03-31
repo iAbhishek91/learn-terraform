@@ -20,3 +20,12 @@ output "zipmap" {
     local = local.zipmap["strawberry"]
   }
 }
+
+//zipmap = {
+//  "direct" = tomap({
+//    "orange" = "orange"
+//    "pinapple" = "yellow"
+//    "strawberry" = "red"
+//  })
+//  "local" = "red"
+//}

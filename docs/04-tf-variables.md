@@ -58,6 +58,16 @@ There are multiple way we can assign value to variable
 - **from a file** tf plan --var-file=xyz.tfvars (default is terraform.tfvars, no need to mention the variable file name explicitly)
 - **command line flag** *this is not much used though as too much typing is required*: tf plan -var="instancetype=t2.nano" # this will override default values
 
+### Precedence of value
+
+- env variable,
+- terraform.tfvars,
+- terraform.tfvars.json,
+- *.auto.tfvars or
+- *.auto.tfvars.json
+
+processed in lexical order of the filenames, last -var and -var-file. If variable are multiple mentioned, then it will take the last occurrence.
+
 ## List | Map | Tuple | Object
 
 **List** array of specific type | *type = list(string)*                                   | var.list_type[0]

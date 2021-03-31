@@ -11,6 +11,7 @@
   - State locking can be applied is backend supports it. For every write action terraform creates a lock so that other actions are not able to access the same resource simultaneously.
   - There is a mechanism of force unlock which allows forcefully acquire the resource. Be careful with this command.
 - Hashicorp do not promote yaml, instead uses Their own configuration language.
+- Terraform uses parallelism, to create resource quicker, the default value is 10.
 
 ## Terms with terraform
 

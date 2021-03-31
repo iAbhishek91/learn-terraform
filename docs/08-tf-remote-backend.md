@@ -1,6 +1,8 @@
 # Remote backend
 
-Remote backend are remote plae where you can save your state files.
+Remote backend are remote place where you can save your state files.
+
+> NOTE: all backend in terraform are classified under two categories: as enhanced and standard. There are only two enhanced backend: local and remote, which can store state file as well as run terraform command.
 
 This is useful when we are working with **multiple team members**.
 
@@ -11,3 +13,16 @@ Basically what it does is it keeps the file in a remote place. Generally **S3 or
 Then we need to configure terraform to store the statefile to the remote place instead of local.
 
 > Ref: xx-remote project
+
+## First time configuration
+
+When configuring a backend for the first time, i.e, moving from no defined backend to explicitly configuring one, terraform will give you the option to migrate your state to the new backend.
+
+## Partial time configuration
+
+Its not necessary to specify every required argument in the backend configuration, mainly due to security reason, can later mention that during initialization
+
+`tf init \
+    -backend-config="address=demo.consule.io"
+    -backend-config="path=example"
+    -backend-config="argument_name=argument value"`

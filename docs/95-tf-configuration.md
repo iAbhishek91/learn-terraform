@@ -7,6 +7,8 @@ For example: requiring a minimum terraform version
 
 Terraform settings are gathered into terraform block, however NOTE, this you can have multiple terraform blocks(one defining backend, another providers)
 
+>NOTE: if required version of terraform doesn't match the constraints specified, terraform will produced an error and exit without taking any further actions.
+
 ```hcl
 terraform {
     required_version = "> 0.12.0"

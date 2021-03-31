@@ -10,3 +10,5 @@ output "myout" {
   sensitive = true
   description = "bla bla"
 }
+
+//myout = <sensitive>

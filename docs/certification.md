@@ -9,27 +9,55 @@
 ## Important pointers
 
 - Focus on **providers** and its capabilities (like use of alias, assume_role). Most of the providers corresponds to one cloud or on-premise infrastructure platform, and offers resource types. Version upgrade, and locking of providers are also important.
+- **provider** block is not mandatory, it might or might not be necessary based on the configuration. For example you have only variables, locals and outputs then providers are not required.
+- **required provider** and **required version**
 - **tf init**: looks for modules, else downloads it, looks for providers, downloads and installs it so that it can be executed, and will initialize the backend.
 - **tf plan**: not modify anything, it will perform refresh, actions that are necessary to achieve the desired state, can save the plan to be later applied.
-- **tf apply**: apply the changes required to reach the desired state of the configuration, also writes data to terraform.tfstate file. Also once apply is completed, the resource are available.
+- **tf apply**: apply the changes required to reach the desired state of the configuration, also writes data to terraform.tfstate file. Also once apply is completed, the resource are available. it can delete, update, create, but not import anything.
 - **tf refresh**: it modify the state file based on the current infra, and no changes are made on the actual infra.
 - **tf destroy**: destroys all terraform managed infra. another way to delete is to delete the config and perform tf apply.
 - **tf fmt**: canonical format and style.
 - **tf validate**: init is required, static check of syntax, correctness of attributes names and its value types.
 - **tf import**: configuration are to be created prior to import, only updates state file.
-- **Provisioners**: provisioners should be last resort, most of the case there are alternatives. provisioner are inside resource block, practice the syntax of the provisioners.
+- **tf graph**: generate graph in dot format(configuration and execution plan), can be converted to svg,
+- **tf output**: values from the state files only.
+- **tf taint**: resource will be destroyed and re-created on next plan & apply.
+- **tf workflow**, & **tf state** - sub commands.
+- **Provisioners**: provisioners should be last resort, most of the case there are alternatives. provisioner are inside resource block, practice the syntax of the provisioners. local-exec and remote-exec(connection type are ssh or winrm) are important. on_failure - continue or fail. when=destroy.
 - **Debugging**: TF_LOG (TRACE, DEBUG, ERROR, WARN, INFO), TF_LOG_PATH
 - **other environment variable**: TF_VAR_varname=value, TF_INPUT=0, TF_DATA_DIR (by default .terraform in current dir), TF_WORKSPACE=workspace, TF_CLI_CONFIG_FILE="/path/to/file"
 - **locals**: name to a expression,cycles are not allowed means it cant refer itself, or create any other cycles, it is recommended to group together logically-related local values into a single block, particularly if they depend on each other.
 - **data types**: need to read documents and practice
-- **workspace**: workspace allows multiple state file under terraform.tfstate.d, we can have multiple set of environment variables associated.
+- **variables**: with undefined value (variable a {})it will not error, terraform will ask you to supply the value associated with them.
+- **input variables**: if not defined in default, -var-file="", TF_VAR_variable, -var="a=b"
+- **value definition precedence**: env variable, terraform.tfvars, terraform.tfvars.json, *.auto.tfvars or *.auto.tfvars.json processed in lexical order of the filenames, last -var and -var-file. If variable are multiple mentioned, then it will take the last occurrence.
+- **workspace**: workspace allows multiple state file under terraform.tfstate.d, we can have multiple set of environment variables associated. Not suitable for strong separation between workspace (stage/prod)
 - **modules**: from root we can call the child, they are invoked using source(of different supported types), explicitly mention the version(applicable when we are downloading from registry like terraform registry). Meta-args(lifecycle are not allowed) and input vars are also allowed. Calling module can access only output variables, remember the registry format.
-- **output**: value, sensitive(still will show in tf.tfstate), description, default(is not allowed).
-- **function**: element, lookup, length, zipmap, file
+- **output**: value, sensitive(still will show in tf.tfstate, for tf cloud its encrypt at rest and TLS in transit and maintain history of state changes, similar with s3), description, default(is not allowed).
+- **function**: element, lookup, length, zipmap, file, index, slice(not part of string), join, split, chomp are string func.
 - **meta-arg**:
   - **count** - count and count.index
-  - **s**
-- **state lock**: lock need to be supported by backend, unlock is forced if required `tf force-unlock`, lock is only for write operations.
+  - **depends_on**
+- **state lock**: lock need to be supported by backend, unlock is forced if unlock have failed `tf force-unlock`, lock is only for write operations.
 - **Best practices**:
-  - access key and secret key should not be part of the code, either in provider or in backend.
-  - 
+  - access key and secret key should not be part of the code, either in provider or in backend. Either as env variable or use vault.
+  - overuse of dynamic block will make your configuration difficult to use.
+  - don't create large terraform configuration, it becomes difficult to manage, as well it will cause aPI limit(rate limiting). Its better to break large configuration into smaller configuration which can be independently deployed.
+- **cloud and enterprise**
+  - **sentinel**: policy-as-code framework, this are policy check and is available with all hashicorp enterprise products. different scenario would be given. like tags are there or not, encryption is enabled or not. It also a proactive service.
+  - **remote backend**: stores the state and enable you to run tf commands from local, streaming the outputs to local cli.
+  - **Terraform enterprise features(business pricing model)**: SSO, Auditing, Private data center n/w, clustering, team managements & governance(comes along with T&G pricing model).
+- **features**
+  - **go is not pre-requisite**
+  - **runs on windows, Linux and Mac**
+  - **windows servers are not mandatory**
+- **splat expression**: allows to view the all the element of the list
+- **terminologies**:
+  - **resource type**: aws_instance
+  - **local name**: name of the resource, never used in the resource that are created.
+  - **argument name**: arn -  inside the resource block
+  - **argument value**: ami-asdklfj2l34j2l3k4
+- **benefits of Infrastructure as code tool**: Automation, Versioning, Reusability. other tools are CloudFormation, Azure Resource Manager, Google cloud Deployment Manager.
+- **backend**: is defined in terraform section, requires init
+- **fetch a value**: from different type of variables, locals, data, modules.
+- **module**: source "git::url(https/ssh)?ref-v1.2.1" read the documents.

@@ -11,3 +11,5 @@ If we have multiple environment, we can have common terraform script to server t
 ```sh
 tf plan --var-file=prod.tfvars
 ```
+
+>NOTE: few files are auto loaded in terraform: terraform.tfvars, terraform.tfvars.json, *.auto.tfvars, *.auto.tfvars.json

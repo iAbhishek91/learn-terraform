@@ -77,7 +77,7 @@ Again, sentinel checks are inserted in between plan and apply.
 - first create a policy-set, with no VCS connection. *one can integrate with VCS as well*. It can be for all workspaces or for specific workspaces.
 - next, create the policy:
   - name
-  - enforcement mode: hard mandatory(can be overridden), soft mandatory(can be overridden)
+  - enforcement mode: hard mandatory(can be overridden), soft mandatory(can be overridden), advisory (will just show an warning message on the in the run)
   - code
     ``` py
     import "tfplan"

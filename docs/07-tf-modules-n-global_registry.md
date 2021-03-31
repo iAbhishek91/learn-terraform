@@ -29,7 +29,7 @@ There are different type of source that are supported by terraform:
 
 ```hcl
 module "consule" {
-    source = "/path/to/module"
+    source = "/path/to/module" // MUST begin with ./ or ../
 }
 ```
 

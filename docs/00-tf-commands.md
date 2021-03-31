@@ -2,23 +2,30 @@
 
 ## INIT
 
+> refresh is not executed under the hood
+
 ```sh
-terraform init
+tf init
 # this command also initialize the backend
 # it download the plugins required and initializes tf
 # this command is idempotent
 # this is first command you run when you write configuration file, update or clone from somewhere.
 
-terraform init -lock=false
+tf init -lock=false
 
 # to upgrade the provider plugin version when lock file exits
 # this command will update the lock file as well
-terraform init -upgrade
+tf init -upgrade
+
+# Partial configuration
+tf init -backend-config="argument-key=argument-val" -backend-config="argument-key=argument-val"
 ```
 
 ## PLAN
 
 **plan** is executed as part of apply and destroy
+
+> refresh is executed under the hood
 
 ```sh
 tf plan
@@ -64,12 +71,17 @@ tf plan -refresh=false
 # to minimize the API call, we can also restrict plan for target resource, instead of *
 # this is also for the same purpose as previous one
 tf plan -target=ec2
+
+# tf plan will preview what will change if its applied, however destroy preview is also provided
+tf plan -destroy
 ```
 
 - checks the state, to verify what is already created and whats not. it creates a .terraform folder. Its difficult if we loose that file.
 - refer *0x-tf-save-state-file.md* to know more how to store state file safe and secure.
 
 ## APPLY
+
+> refresh is executed under the hood
 
 ```sh
 # apply the resource in the provider. it will also check everything using the PLAN and ask for confirmation by default
@@ -87,6 +99,8 @@ tf apply -var-files=prod.tfvars
 ```
 
 ## DESTROY
+
+> refresh is executed under the hood
 
 ```sh
 tf destroy
@@ -116,6 +130,8 @@ tf destroy -target aws_instance.myec2 # deletes only myec2 aws ec2 instance
 ```
 
 ## IMPORT
+
+> refresh is executed under the hood
 
 ```sh
 # refer 99-challenges/xx-import-ec2 for the steps required
@@ -236,8 +252,10 @@ terraform taint
 # The resource aws_security_group.allow_all in the module root has been marked as tainted.
 $ terraform taint aws_security_group.allow_all
 
-#The resource module.route_tables.azurerm_route_table.rt["DefaultSubnet"] in the module root has been marked as tainted.
+# The resource module.route_tables.azurerm_route_table.rt["DefaultSubnet"] in the module root has been marked as tainted.
 terraform taint 'module.route_tables.azurerm_route_table.rt["DefaultSubnet"]'
+# sub module
+tf taint "module.a.module.b.aws_instance.temp"
 
 # Untaint have same syntax as taint
 terraform untaint
@@ -255,7 +273,9 @@ terraform refresh -var-file=prod.tfvars
 
 ### OUTPUT
 
-We can use `tf apply` to fetch the output values at later stage, instead of tf output. tf output provides a alternative to the same
+We can use `tf apply` to fetch the output values from the state file ONLY at later stage, instead of tf apply. tf output provides a alternative to the same
+
+>NOTE; sudo tf output will display sensitive data in plain text
 
 ```sh
 # extract output values from state file
@@ -316,7 +336,7 @@ tf workspace show
 # list all the workspace, and also the current one in use
 tf workspace list
 
-# create a new workspace
+# create a new workspace and switch to the workspace
 tf workspace new my-workspace
 
 # delete a workspace
