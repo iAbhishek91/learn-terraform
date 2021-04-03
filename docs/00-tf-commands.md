@@ -19,6 +19,12 @@ tf init -upgrade
 
 # Partial configuration
 tf init -backend-config="argument-key=argument-val" -backend-config="argument-key=argument-val"
+
+# auto-download and plugin discovery behaviour can be by passed using the plugin-dir
+tf init -plugin-dir=/path/to/plugin/dir -input=false
+
+# flag used to prevent terraform from automatically downloading additional plugins
+tf init -get-plugin=false
 ```
 
 ## PLAN
@@ -131,7 +137,7 @@ tf destroy -target aws_instance.myec2 # deletes only myec2 aws ec2 instance
 
 ## IMPORT
 
-> refresh is executed under the hood
+> refresh is NOT executed under the hood
 
 ```sh
 # refer 99-challenges/xx-import-ec2 for the steps required
@@ -166,6 +172,9 @@ tf validate
 $ echo "1 + 5" | terraform console
 ## OUTPUT
 # 6
+
+# debugging the interpolations
+tf console
 ```
 
 ### FORCE_UNLOCK

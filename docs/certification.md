@@ -58,6 +58,9 @@
   - **argument name**: arn -  inside the resource block
   - **argument value**: ami-asdklfj2l34j2l3k4
 - **benefits of Infrastructure as code tool**: Automation, Versioning, Reusability. other tools are CloudFormation, Azure Resource Manager, Google cloud Deployment Manager.
+- **benefits of using terraform as IaaC**: Operator confidence, Platform agnostic, State management
+- **benefits of IaaC**: Version, reusability and automation(reliability, manageable, and make sense)
 - **backend**: is defined in terraform section, requires init
 - **fetch a value**: from different type of variables, locals, data, modules.
 - **module**: source "git::url(https/ssh)?ref-v1.2.1" read the documents.
+- **data source** are executed during the plan phase.

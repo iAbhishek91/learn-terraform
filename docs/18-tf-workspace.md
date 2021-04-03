@@ -13,5 +13,6 @@ Refer: XX-tf-workspace
 >NOTE: All backend do not support workspaces, but most of them does like S3, GCS, Local, Remote, Kubernetes, etc.
 
 current workspace is stored in .terraform/environment
+state files are stored in "terraform.tfstate.d" directory.
 
 >NOTE: Workspace are NOT suggested if there a strong separation between the infra on different environment

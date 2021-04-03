@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "eu-west-2"
-}
-
 // importing a module
 module "ec2module" {
   source = "./ec2"

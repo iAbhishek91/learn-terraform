@@ -61,3 +61,5 @@ resource "aws_instance" "web" {
         on_failure = continue
     }
 }
+
+>NOTE: IMPORTANT, if terraform fails due to provisioners, then the resources are marked as tainted.

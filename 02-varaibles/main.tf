@@ -1,8 +1,3 @@
-provider "aws" {
-  region = "eu-west-2"
-}
-
-
 locals {
   time = formatdate("DD MMM YYYY hh:mm ZZZ", timestamp())
 }

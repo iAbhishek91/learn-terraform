@@ -4,7 +4,9 @@ Dependencies are required to be mentioned when some resources are required to be
 
 Terraform by default DO NOT respect the order of the .tf files. Hence we need to mention the dependencies explicitly.
 
->NOTE: if there are some reference of any resource on another, terraform will create a implicit dependencies.
+>NOTE: if there are some reference of any resource on another, terraform will create a **implicit dependencies**.
+
+Both *implicit dependencies* and *external dependencies* are stored in state file.
 
 **Syntax** : depends_on = [ aws_instance.db ]
 
