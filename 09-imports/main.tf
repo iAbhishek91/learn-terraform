@@ -11,6 +11,7 @@ resource "aws_vpc" "myvpc1" {
 # add this later; after adding the same resource from cloud console.
 # the scenario is that the resource is first created from console and not from Terraform
 # the we import the resource using the command "tf import aws_vpc.myvpc2 vpc-05372a0768b93f530" take the id from the cloud console.
+# for s3 bucket import "tf import module.ca.aws_s3.s3_bucket name-of-the-bucket"
 resource "aws_vpc" "myvpc2" {
   cidr_block = "192.168.0.0/24"
 }
